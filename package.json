@@ -1,10 +1,10 @@
 {
   "name": "paseo-send-file",
   "private": true,
-  "description": "Paseo plugin: agents send files from the daemon to the chat as download buttons.",
+  "description": "Paseo plugin: agents send files from the daemon to the chat; images are shown inline, other files get a download button.",
   "license": "MIT",
   "repository": { "type": "git", "url": "git+https://github.com/warpreality/paseo-send-file.git" },
-  "version": "0.1.0",
+  "version": "0.2.0",
   "files": [
     "paseo-plugin.json",
     "OVERVIEW.md",

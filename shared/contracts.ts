@@ -14,8 +14,16 @@ export const sharedFileSchema = z.object({
   mimeType: z.string(),
   path: z.string(),
   note: z.string().optional(),
+  /** Pixel size of an image, read from its header when shared. Lets the card reserve space before loading. */
+  image: z.object({ width: z.number(), height: z.number() }).optional(),
 });
 export type SharedFile = z.infer<typeof sharedFileSchema>;
+
+/** Images up to this size are loaded and shown inline in the chat. Bigger ones get a regular file card. */
+export const PREVIEW_MAX_BYTES = 25 * 1024 * 1024;
+
+/** Mime types the app can display inline. SVG is web-only (React Native's Image cannot draw it). */
+export const PREVIEWABLE_IMAGE_TYPES = ["image/png", "image/jpeg", "image/gif", "image/webp", "image/bmp", "image/svg+xml"];
 
 /** Reads one chunk of a shared file. Only files the agent shared (known token) are readable. */
 export const readChunkRpc = defineRpc({

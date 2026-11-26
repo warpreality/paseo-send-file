@@ -28,6 +28,18 @@ declare const Blob: new (parts: Uint8Array[], options: { type: string }) => unkn
 
 export const canDownload = Platform.OS === "web";
 
+/** Blob URLs are cheaper than data URIs for big images; only the web runtime has them. */
+export const canUseObjectUrl = Platform.OS === "web";
+
+export function createObjectUrl(bytes: Uint8Array, mimeType: string): string {
+  if (!canUseObjectUrl) throw new Error("Object URLs are only available on the web.");
+  return URL.createObjectURL(new Blob([bytes], { type: mimeType }));
+}
+
+export function revokeObjectUrl(url: string) {
+  if (canUseObjectUrl) URL.revokeObjectURL(url);
+}
+
 export type ChunkReader = (offset: number) => Promise<Uint8Array>;
 
 /**

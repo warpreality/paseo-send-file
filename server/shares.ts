@@ -41,7 +41,7 @@ const MIME: Record<string, string> = {
   yaml: "application/yaml", yml: "application/yaml", xml: "application/xml", html: "text/html",
   pdf: "application/pdf", zip: "application/zip", gz: "application/gzip", tgz: "application/gzip",
   tar: "application/x-tar", png: "image/png", jpg: "image/jpeg", jpeg: "image/jpeg", gif: "image/gif",
-  svg: "image/svg+xml", webp: "image/webp", sql: "application/sql",
+  svg: "image/svg+xml", webp: "image/webp", bmp: "image/bmp", sql: "application/sql",
   xlsx: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
   docx: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
 };

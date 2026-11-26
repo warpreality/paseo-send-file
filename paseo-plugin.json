@@ -1,7 +1,7 @@
 {
   "id": "paseo-send-file",
   "name": "Send file",
-  "description": "Lets agents send files from the daemon machine to the chat as download buttons.",
+  "description": "Lets agents send files from the daemon machine to the chat: images are shown inline, other files get a download button.",
   "media": [],
   "requirements": {
     "paseo": ">=0.16.2"

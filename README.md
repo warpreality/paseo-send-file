@@ -1,6 +1,6 @@
 # paseo-send-file
 
-A [Paseo](https://paseo.sh) plugin that lets agents send files from the daemon machine to the chat as a download button.
+A [Paseo](https://paseo.sh) plugin that lets agents send files from the daemon machine to the chat. Images are shown inline; other files get a download button.
 
 Useful when the Paseo daemon runs on a remote server and you want a file (a log, a dump, a report, an archive) on the computer where the Paseo app is running.
 
@@ -8,9 +8,10 @@ Useful when the Paseo daemon runs on a remote server and you want a file (a log,
 
 - Every agent gets a `send_file_to_user` tool: `path` (absolute, `~/…` or relative to the agent's cwd), optional `filename` and `note`.
 - The tool registers the file under a random token and appends a card to the agent's timeline with the file name, size, path and a **Download** button.
+- Images (PNG, JPEG, GIF, WebP, BMP, SVG on web/desktop) up to 25 MB are rendered inline in the chat; tap to open full size. The server reads the pixel size from the file header (honouring JPEG EXIF rotation) so the card reserves space and the timeline does not jump while the image loads.
 - The button streams the file from the daemon in 4 MB chunks over the existing Paseo connection — no extra ports or public URLs.
 - Desktop/web app: uses the native "Save as" dialog when available (streams to disk), otherwise a regular browser download.
-- Mobile: shows the card with a "copy path" button.
+- Mobile: images are shown inline; other files show a "copy path" button.
 
 Only files an agent explicitly shared are readable through the plugin's RPC.
 
@@ -32,7 +33,7 @@ Plugins must be enabled on the daemon (`pluginsEnabled: true`, or Settings → P
 
 ## Usage
 
-Just ask the agent: *"send me /var/log/app.log"* or *"pack the reports directory and send it to me"*.
+Just ask the agent: *"send me /var/log/app.log"*, *"pack the reports directory and send it to me"* or *"take a screenshot and show it to me"*.
 
 ## Configuration
 
